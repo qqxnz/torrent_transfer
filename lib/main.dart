@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:torrent_transfer/transfer_provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(   MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (_) => TransferProvider.instance),
+    ],
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -34,6 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   void _incrementCounter() {
+    TransferProvider.instance.createSource('https://qb1-qqxnz.tocmcc.cn', 'admin', 'Lsm164665950');
     setState(() {
       _counter++;
     });
