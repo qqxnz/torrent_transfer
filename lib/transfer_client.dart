@@ -12,7 +12,7 @@ class TransferClient {
   Future<void> connect(){
     QBittorrentApiV2 qbittorrent = QBittorrentApiV2(
       baseUrl: url,   // Replace with the actual URL of your qBittorrent server
-      cookiePath: '.',                    // Path where login cookies is stored
+      cookiePath: null,                    // Path where login cookies is stored
       logger: true,                       // Enable logging
     );
     return qbittorrent.auth.login(username: username, password: password);
