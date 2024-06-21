@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:torrent_transfer/transfer_provider.dart';
 
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: '种子转移工具',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
@@ -40,8 +41,9 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
-  void _incrementCounter() {
-    TransferProvider.instance.createSource('http://10.255.0.13:8080', 'admin', 'Tank123456');
+  void _incrementCounter() async{
+    bool? success = await TransferProvider.instance.createSource('http://10.255.0.14:8080', 'admin', 'Tank123456');
+    print('Source连接$success');
     setState(() {
       _counter++;
     });
@@ -58,8 +60,14 @@ class _MyHomePageState extends State<MyHomePage> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          SizedBox(
-            width: 200,
+          Container(
+            color: Colors.blue,
+            height: 200,
+            child: Row(
+              children: [
+                Container(),
+              ],
+            ),
           ),
           const Text(
             'You have pushed the button this many times:',

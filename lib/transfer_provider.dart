@@ -15,9 +15,8 @@ class TransferProvider extends ChangeNotifier {
 
   TransferClient? source;
 
-  Future<void> createSource(String url, String username, String password) async{
+  Future<bool>? createSource(String url, String username, String password) {
     source = TransferClient(url: url, username: username, password: password);
-    await source?.connect();
+    return source?.connect();
   }
-
 }
